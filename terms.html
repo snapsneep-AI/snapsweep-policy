@@ -1,38 +1,781 @@
-Terms of Service & End User License Agreement (EULA)
-By downloading or using SnapSweep AI, you agree to these terms.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Terms of Service & EULA — SnapSweep AI</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-1. License
-We grant you a limited, non-exclusive, non-transferable license to use the app.
+  :root {
+    --ink: #0f0f0f;
+    --ink-2: #3a3a3a;
+    --ink-3: #6b6b6b;
+    --ink-4: #9a9a9a;
+    --surface: #fafaf8;
+    --surface-2: #f2f1ee;
+    --surface-3: #e8e6e1;
+    --accent: #1a6b4a;
+    --accent-light: #e8f4ef;
+    --accent-mid: #2d9668;
+    --border: rgba(0,0,0,0.08);
+    --border-strong: rgba(0,0,0,0.14);
+    --radius: 12px;
+    --radius-sm: 6px;
+    --font-display: 'DM Serif Display', Georgia, serif;
+    --font-body: 'DM Sans', system-ui, sans-serif;
+  }
 
-2. Acceptable Use
-You agree not to misuse the app or use it for unlawful purposes.
+  html { scroll-behavior: smooth; }
 
-3. User Responsibility
-You are responsible for reviewing files before deletion. SnapSweep AI is not liable for accidental deletions.
+  body {
+    font-family: var(--font-body);
+    background: var(--surface);
+    color: var(--ink);
+    line-height: 1.7;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+  }
 
-4. Premium Features
-Premium features are unlocked via Google Play Billing. Purchases are subject to Google’s policies.
+  /* ── HEADER ── */
+  .site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(250,250,248,0.92);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .header-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+  }
+  .logo-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .logo-icon svg { width: 18px; height: 18px; fill: #fff; }
+  .logo-name {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--ink);
+    letter-spacing: -0.2px;
+  }
+  .logo-name span { color: var(--accent); }
+  .header-badge {
+    font-size: 12px;
+    color: var(--ink-3);
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: 400;
+  }
 
-5. Ads
-The free version includes ads. Premium removes ads.
+  /* ── HERO ── */
+  .hero {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 64px 24px 48px;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-label {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--accent);
+    background: var(--accent-light);
+    border: 1px solid rgba(26,107,74,0.2);
+    padding: 5px 12px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.3px;
+    text-transform: uppercase;
+  }
+  .hero-label::before {
+    content: '';
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(32px, 5vw, 48px);
+    font-weight: 400;
+    color: var(--ink);
+    line-height: 1.15;
+    letter-spacing: -0.5px;
+    margin-bottom: 16px;
+  }
+  .hero h1 em {
+    font-style: italic;
+    color: var(--accent);
+  }
+  .hero-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-top: 24px;
+  }
+  .meta-item {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    color: var(--ink-3);
+  }
+  .meta-item svg { width: 14px; height: 14px; opacity: 0.6; }
 
-6. Intellectual Property
-All app content, branding, and technology are owned by SnapSweep AI.
+  /* ── LAYOUT ── */
+  .layout {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 0 24px;
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 0 48px;
+    align-items: start;
+  }
 
-7. No Warranty
-The app is provided "as is" without warranties of any kind.
+  /* ── TOC SIDEBAR ── */
+  .toc {
+    position: sticky;
+    top: 80px;
+    padding: 32px 0;
+  }
+  .toc-title {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+  }
+  .toc-list { list-style: none; }
+  .toc-list li { margin-bottom: 2px; }
+  .toc-list a {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--ink-3);
+    text-decoration: none;
+    padding: 6px 8px;
+    border-radius: var(--radius-sm);
+    transition: all 0.15s;
+    line-height: 1.4;
+  }
+  .toc-list a:hover { color: var(--ink); background: var(--surface-2); }
+  .toc-list a.active { color: var(--accent); background: var(--accent-light); font-weight: 500; }
+  .toc-num {
+    font-size: 10px;
+    color: var(--ink-4);
+    min-width: 16px;
+    font-variant-numeric: tabular-nums;
+  }
+  .toc-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 12px 0;
+  }
+  .toc-contact {
+    margin-top: 16px;
+    padding: 14px;
+    background: var(--accent-light);
+    border: 1px solid rgba(26,107,74,0.15);
+    border-radius: var(--radius);
+    font-size: 12px;
+    color: var(--ink-2);
+    line-height: 1.5;
+  }
+  .toc-contact strong { display: block; color: var(--accent); margin-bottom: 4px; font-size: 11px; text-transform: uppercase; letter-spacing: 0.5px; }
+  .toc-contact a { color: var(--accent); text-decoration: none; font-weight: 500; }
 
-8. Limitation of Liability
-We are not liable for data loss, device issues, or indirect damages.
+  /* ── CONTENT ── */
+  .content {
+    padding: 40px 0 80px;
+    border-left: 1px solid var(--border);
+    padding-left: 48px;
+  }
 
-9. Termination
-We may suspend access if terms are violated.
+  /* Summary banner */
+  .summary-banner {
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: var(--radius);
+    padding: 20px 24px;
+    margin-bottom: 40px;
+    display: flex;
+    gap: 14px;
+    align-items: flex-start;
+  }
+  .summary-icon {
+    width: 36px;
+    height: 36px;
+    background: var(--accent);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+  }
+  .summary-icon svg { width: 18px; height: 18px; fill: #fff; }
+  .summary-text p { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+  .summary-text strong { color: var(--ink); font-weight: 500; display: block; margin-bottom: 4px; font-size: 14px; }
 
-10. Updates
-We may update the app and terms at any time.
+  /* Sections */
+  .section {
+    margin-bottom: 44px;
+    scroll-margin-top: 80px;
+  }
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+  .section-num {
+    width: 28px;
+    height: 28px;
+    background: var(--surface-2);
+    border: 1px solid var(--border-strong);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--ink-3);
+    flex-shrink: 0;
+    margin-top: 3px;
+    font-variant-numeric: tabular-nums;
+  }
+  .section h2 {
+    font-family: var(--font-display);
+    font-size: 22px;
+    font-weight: 400;
+    color: var(--ink);
+    letter-spacing: -0.3px;
+    line-height: 1.3;
+  }
+  .section p {
+    font-size: 15px;
+    color: var(--ink-2);
+    line-height: 1.75;
+    margin-bottom: 12px;
+  }
+  .section p:last-child { margin-bottom: 0; }
 
-11. Governing Law
-These terms are governed by applicable laws in your jurisdiction.
+  /* Callout boxes */
+  .callout {
+    border-radius: var(--radius);
+    padding: 16px 20px;
+    margin: 16px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    display: flex;
+    gap: 12px;
+    align-items: flex-start;
+  }
+  .callout-icon { font-size: 16px; flex-shrink: 0; margin-top: 1px; }
+  .callout.info { background: #eff6ff; border: 1px solid #bfdbfe; color: #1e40af; }
+  .callout.warning { background: #fffbeb; border: 1px solid #fde68a; color: #92400e; }
+  .callout.success { background: var(--accent-light); border: 1px solid rgba(26,107,74,0.2); color: #166534; }
+  .callout.neutral { background: var(--surface-2); border: 1px solid var(--border-strong); color: var(--ink-2); }
 
-12. Contact
-Email: support@snapsweep.ai
+  /* List styles */
+  .styled-list {
+    list-style: none;
+    margin: 12px 0;
+  }
+  .styled-list li {
+    font-size: 14.5px;
+    color: var(--ink-2);
+    padding: 8px 0 8px 24px;
+    position: relative;
+    border-bottom: 1px solid var(--border);
+    line-height: 1.6;
+  }
+  .styled-list li:last-child { border-bottom: none; }
+  .styled-list li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 16px;
+    width: 6px;
+    height: 6px;
+    background: var(--accent);
+    border-radius: 50%;
+    opacity: 0.6;
+  }
+
+  /* Tag */
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 2px 8px;
+    border-radius: 4px;
+    vertical-align: middle;
+    margin-left: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
+  }
+  .tag.green { background: var(--accent-light); color: var(--accent); border: 1px solid rgba(26,107,74,0.2); }
+  .tag.blue { background: #eff6ff; color: #1e40af; border: 1px solid #bfdbfe; }
+  .tag.amber { background: #fffbeb; color: #92400e; border: 1px solid #fde68a; }
+
+  /* Divider */
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 44px 0;
+  }
+
+  /* ── FOOTER ── */
+  .footer {
+    border-top: 1px solid var(--border);
+    background: var(--surface-2);
+  }
+  .footer-inner {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .footer-left { display: flex; flex-direction: column; gap: 6px; }
+  .footer-logo { display: flex; align-items: center; gap: 8px; }
+  .footer-logo-dot { width: 20px; height: 20px; background: var(--accent); border-radius: 5px; }
+  .footer-logo-name { font-size: 14px; font-weight: 500; color: var(--ink); }
+  .footer-copy { font-size: 12px; color: var(--ink-4); }
+  .footer-links { display: flex; gap: 20px; }
+  .footer-links a { font-size: 13px; color: var(--ink-3); text-decoration: none; transition: color 0.15s; }
+  .footer-links a:hover { color: var(--accent); }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .layout { grid-template-columns: 1fr; }
+    .toc { display: none; }
+    .content { border-left: none; padding-left: 0; }
+    .hero { padding: 40px 20px 32px; }
+    .layout { padding: 0 20px; }
+  }
+
+  /* ── SCROLL ANIMATION ── */
+  .section { opacity: 0; transform: translateY(16px); transition: opacity 0.4s ease, transform 0.4s ease; }
+  .section.visible { opacity: 1; transform: translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="header-inner">
+    <a href="#" class="logo">
+      <div class="logo-icon">
+        <svg viewBox="0 0 24 24"><path d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zm-7 14l-5-5 1.41-1.41L12 14.17l7.59-7.59L21 8l-9 9z"/></svg>
+      </div>
+      <span class="logo-name">SnapSweep <span>AI</span></span>
+    </a>
+    <span class="header-badge">Legal Documents</span>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-label">Terms of Service &amp; EULA</div>
+  <h1>Using SnapSweep <em>fairly</em><br>and transparently</h1>
+  <div class="hero-meta">
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      Effective date: March 2025
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Last updated: March 2026
+    </div>
+    <div class="meta-item">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+      Applies globally
+    </div>
+  </div>
+</div>
+
+<!-- MAIN LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR TOC -->
+  <aside class="toc">
+    <div class="toc-title">On this page</div>
+    <ul class="toc-list">
+      <li><a href="#s1"><span class="toc-num">01</span> License Grant</a></li>
+      <li><a href="#s2"><span class="toc-num">02</span> Acceptable Use</a></li>
+      <li><a href="#s3"><span class="toc-num">03</span> User Responsibility</a></li>
+      <li><a href="#s4"><span class="toc-num">04</span> Premium Features</a></li>
+      <li><a href="#s5"><span class="toc-num">05</span> Advertising</a></li>
+      <li><a href="#s6"><span class="toc-num">06</span> Intellectual Property</a></li>
+      <li><a href="#s7"><span class="toc-num">07</span> Privacy &amp; Data</a></li>
+      <li><a href="#s8"><span class="toc-num">08</span> AI &amp; Model Disclaimer</a></li>
+      <li><a href="#s9"><span class="toc-num">09</span> No Warranty</a></li>
+      <li><a href="#s10"><span class="toc-num">10</span> Limitation of Liability</a></li>
+      <li><a href="#s11"><span class="toc-num">11</span> Termination</a></li>
+      <li><a href="#s12"><span class="toc-num">12</span> Updates &amp; Changes</a></li>
+      <li><a href="#s13"><span class="toc-num">13</span> Governing Law</a></li>
+      <li><a href="#s14"><span class="toc-num">14</span> Contact Us</a></li>
+    </ul>
+    <hr class="toc-divider">
+    <div class="toc-contact">
+      <strong>Questions?</strong>
+      Write to us at<br>
+      <a href="mailto:support@snapsweep.ai">support@snapsweep.ai</a>
+    </div>
+  </aside>
+
+  <!-- CONTENT -->
+  <main class="content">
+
+    <!-- Summary banner -->
+    <div class="summary-banner">
+      <div class="summary-icon">
+        <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-6h2v6zm0-8h-2V7h2v2z"/></svg>
+      </div>
+      <div class="summary-text">
+        <strong>Plain-English Summary</strong>
+        <p>By downloading and using SnapSweep AI, you agree to these terms. The app uses AI to help clean your device. <strong>You are always in control</strong> — nothing is deleted without your explicit confirmation. Please review files carefully before deleting. Premium features are available via Google Play Billing.</p>
+      </div>
+    </div>
+
+    <!-- Section 1 -->
+    <div class="section" id="s1">
+      <div class="section-header">
+        <div class="section-num">01</div>
+        <h2>License Grant</h2>
+      </div>
+      <p>SnapSweep AI ("we", "our", "the Company") grants you a limited, personal, non-exclusive, non-transferable, revocable license to install and use the SnapSweep AI mobile application ("the App") on Android devices that you own or control, solely for your personal, non-commercial use.</p>
+      <div class="callout success">
+        <span class="callout-icon">✓</span>
+        <div>You may install the App on your personal Android device and use all features according to your subscription tier (Free or Premium).</div>
+      </div>
+      <ul class="styled-list">
+        <li>You may not copy, modify, distribute, sell, or lease any part of the App</li>
+        <li>You may not reverse-engineer or attempt to extract the source code</li>
+        <li>You may not sublicense or transfer your rights to any third party</li>
+        <li>You may not use the App for any commercial purpose without written consent</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 2 -->
+    <div class="section" id="s2">
+      <div class="section-header">
+        <div class="section-num">02</div>
+        <h2>Acceptable Use</h2>
+      </div>
+      <p>You agree to use SnapSweep AI only for lawful purposes and in a way that does not infringe the rights of others or restrict their use and enjoyment of the App.</p>
+      <p>You must not use the App to:</p>
+      <ul class="styled-list">
+        <li>Delete files on a device you do not own or have permission to access</li>
+        <li>Circumvent, disable, or interfere with security-related features</li>
+        <li>Transmit any unsolicited or unauthorised advertising or promotional material</li>
+        <li>Engage in any conduct that restricts or inhibits anyone's use or enjoyment of the App</li>
+        <li>Attempt to gain unauthorised access to any systems or networks connected to the App</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 3 -->
+    <div class="section" id="s3">
+      <div class="section-header">
+        <div class="section-num">03</div>
+        <h2>User Responsibility &amp; File Deletion</h2>
+      </div>
+      <p>SnapSweep AI uses on-device artificial intelligence to identify files that may be duplicates, low-quality, or otherwise suitable for deletion. This process is automated and, while designed to be accurate, is not infallible.</p>
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div><strong>Important:</strong> You are solely responsible for reviewing all files flagged by the App before confirming deletion. SnapSweep AI will never delete files without your explicit tap-to-confirm action.</div>
+      </div>
+      <p>We strongly recommend:</p>
+      <ul class="styled-list">
+        <li>Reviewing each suggested file individually before bulk-deleting</li>
+        <li>Backing up important files to Google Drive or another service before any scan</li>
+        <li>Using the Recycle Bin feature (30-day recovery window) as a safety net</li>
+        <li>Not relying solely on the App's AI classification for irreplaceable files</li>
+      </ul>
+      <p><strong>SnapSweep AI is not liable for any data loss arising from your use of the deletion features.</strong> All AI suggestions are recommendations only.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 4 -->
+    <div class="section" id="s4">
+      <div class="section-header">
+        <div class="section-num">04</div>
+        <h2>Premium Features &amp; Billing</h2>
+      </div>
+      <p>SnapSweep AI offers a free tier and a Premium subscription. Premium features are unlocked through Google Play Billing and are governed by Google's payment and refund policies.</p>
+      <div class="callout info">
+        <span class="callout-icon">ℹ</span>
+        <div>Purchases are processed by Google Play. For refunds, cancellations, or billing disputes, please contact Google Play Support directly or visit your Google Play account.</div>
+      </div>
+      <ul class="styled-list">
+        <li>Premium subscriptions renew automatically unless cancelled at least 24 hours before the renewal date</li>
+        <li>You can manage or cancel your subscription at any time via Google Play &gt; Subscriptions</li>
+        <li>Prices may vary by region and are displayed in your local currency at checkout</li>
+        <li>Free trial periods, if offered, convert to paid subscriptions unless cancelled before the trial ends</li>
+        <li>We reserve the right to modify, add, or remove Premium features with reasonable notice</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 5 -->
+    <div class="section" id="s5">
+      <div class="section-header">
+        <div class="section-num">05</div>
+        <h2>Advertising</h2>
+      </div>
+      <p>The free version of SnapSweep AI includes advertisements served by Google AdMob. By using the free tier, you consent to the display of personalised or non-personalised ads in accordance with your preferences set during the consent flow on first launch.</p>
+      <ul class="styled-list">
+        <li>Ads are served in compliance with Google's EU User Consent Policy (GDPR/CCPA where applicable)</li>
+        <li>You may adjust your ad personalisation preferences at any time in the App's Settings</li>
+        <li>Upgrading to Premium removes all advertisements permanently for your subscription period</li>
+        <li>We do not sell your personal data to advertisers</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 6 -->
+    <div class="section" id="s6">
+      <div class="section-header">
+        <div class="section-num">06</div>
+        <h2>Intellectual Property</h2>
+      </div>
+      <p>All content, branding, design, code, AI models, technology, and associated intellectual property within SnapSweep AI are owned by or licensed to SnapSweep AI and are protected by applicable copyright, trademark, and intellectual property laws.</p>
+      <ul class="styled-list">
+        <li>The SnapSweep AI name, logo, and visual identity are trademarks of SnapSweep AI</li>
+        <li>The on-device AI model and classification technology are proprietary</li>
+        <li>User-generated content (your photos and files) remains exclusively yours — we do not claim ownership</li>
+        <li>Feedback or suggestions you submit may be used to improve the App without compensation</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 7 — NEW -->
+    <div class="section" id="s7">
+      <div class="section-header">
+        <div class="section-num">07</div>
+        <h2>Privacy &amp; Data Collection <span class="tag green">Important</span></h2>
+      </div>
+      <p>Your privacy is fundamental to how we built SnapSweep AI. The App is designed with a privacy-first architecture:</p>
+      <div class="callout success">
+        <span class="callout-icon">🔒</span>
+        <div><strong>All AI scanning happens entirely on your device.</strong> Your photos, videos, and files are never uploaded to our servers. We cannot see, access, or store your personal files.</div>
+      </div>
+      <ul class="styled-list">
+        <li><strong>On-device processing:</strong> All file analysis is performed locally using TensorFlow Lite / LiteRT</li>
+        <li><strong>Analytics:</strong> We collect anonymous usage events (e.g. scan counts, feature usage) via Firebase Analytics. No file names, paths, or content are ever logged</li>
+        <li><strong>Crash reporting:</strong> Firebase Crashlytics collects crash logs on release builds only, to help us fix bugs</li>
+        <li><strong>Google Drive:</strong> Backup features are entirely user-initiated. We access only files you explicitly choose to back up</li>
+        <li><strong>No data sold:</strong> We do not sell, rent, or share your personal data with third parties for marketing</li>
+      </ul>
+      <p>For full details, please read our <a href="privacy.html" style="color:var(--accent);font-weight:500;">Privacy Policy</a>.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 8 — NEW -->
+    <div class="section" id="s8">
+      <div class="section-header">
+        <div class="section-num">08</div>
+        <h2>AI &amp; Model Accuracy Disclaimer <span class="tag blue">AI</span></h2>
+      </div>
+      <p>SnapSweep AI uses machine learning models to classify and suggest files for deletion. These models are trained on large datasets and continuously improved, but no AI system is 100% accurate.</p>
+      <div class="callout neutral">
+        <span class="callout-icon">🤖</span>
+        <div>AI suggestions are recommendations only. The App may occasionally flag files that you wish to keep, or miss files you would like to delete. Always review suggestions before confirming any deletion.</div>
+      </div>
+      <ul class="styled-list">
+        <li>Model accuracy improves with each app update based on anonymised usage signals</li>
+        <li>The AI operates entirely on-device — your photos are never sent to train external models</li>
+        <li>Category labels (duplicate, blurry, screenshot, etc.) are best-effort classifications</li>
+        <li>We do not guarantee specific accuracy rates for any device, OS version, or photo type</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 9 -->
+    <div class="section" id="s9">
+      <div class="section-header">
+        <div class="section-num">09</div>
+        <h2>No Warranty</h2>
+      </div>
+      <p>The App is provided <strong>"as is"</strong> and <strong>"as available"</strong> without warranties of any kind, either express or implied, including but not limited to implied warranties of merchantability, fitness for a particular purpose, and non-infringement.</p>
+      <p>We do not warrant that the App will be uninterrupted, error-free, completely secure, or free of viruses or other harmful components. We do not warrant that defects will be corrected or that the App is compatible with all devices and operating system versions.</p>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 10 -->
+    <div class="section" id="s10">
+      <div class="section-header">
+        <div class="section-num">10</div>
+        <h2>Limitation of Liability</h2>
+      </div>
+      <p>To the fullest extent permitted by applicable law, SnapSweep AI and its officers, directors, employees, and agents shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to:</p>
+      <ul class="styled-list">
+        <li>Loss of data, files, or photographs resulting from use of the App</li>
+        <li>Device malfunction, performance degradation, or storage issues</li>
+        <li>Losses arising from reliance on AI classification results</li>
+        <li>Any indirect or consequential losses arising from your use or inability to use the App</li>
+      </ul>
+      <div class="callout warning">
+        <span class="callout-icon">⚠</span>
+        <div>In jurisdictions where limitation of liability for personal damages is not permitted, our liability is limited to the maximum extent permitted by law. Nothing in these terms limits liability for fraud or fraudulent misrepresentation.</div>
+      </div>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 11 -->
+    <div class="section" id="s11">
+      <div class="section-header">
+        <div class="section-num">11</div>
+        <h2>Termination</h2>
+      </div>
+      <p>We may suspend or terminate your access to the App at any time, with or without notice, if we reasonably believe you have violated these Terms. You may also stop using the App at any time by uninstalling it from your device.</p>
+      <ul class="styled-list">
+        <li>Upon termination, your licence to use the App immediately ceases</li>
+        <li>Sections on Intellectual Property, Limitation of Liability, and Governing Law survive termination</li>
+        <li>Premium subscribers who are terminated for Terms violations are not entitled to refunds</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 12 -->
+    <div class="section" id="s12">
+      <div class="section-header">
+        <div class="section-num">12</div>
+        <h2>Updates &amp; Changes to Terms</h2>
+      </div>
+      <p>We may update the App and these Terms at any time. When we make material changes to these Terms, we will notify you through the App or by email (if provided) at least 7 days before the changes take effect.</p>
+      <ul class="styled-list">
+        <li>Continued use of the App after changes constitutes acceptance of the new Terms</li>
+        <li>App updates may be required to continue using certain features</li>
+        <li>We will always maintain an archive of previous versions of these Terms upon request</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 13 -->
+    <div class="section" id="s13">
+      <div class="section-header">
+        <div class="section-num">13</div>
+        <h2>Governing Law &amp; Disputes</h2>
+      </div>
+      <p>These Terms are governed by and construed in accordance with applicable laws. If you are a consumer in the European Union or United Kingdom, you benefit from any mandatory provisions of the law of your country of residence.</p>
+      <ul class="styled-list">
+        <li>Any disputes will first be attempted to be resolved amicably by contacting our support team</li>
+        <li>If a dispute cannot be resolved informally, it shall be subject to the jurisdiction of applicable courts</li>
+        <li>EU consumers may also use the EU Online Dispute Resolution platform at <a href="https://ec.europa.eu/consumers/odr" style="color:var(--accent);" target="_blank">ec.europa.eu/consumers/odr</a></li>
+        <li>Nothing in these Terms affects your statutory rights as a consumer</li>
+      </ul>
+    </div>
+
+    <hr class="section-divider">
+
+    <!-- Section 14 -->
+    <div class="section" id="s14">
+      <div class="section-header">
+        <div class="section-num">14</div>
+        <h2>Contact Us</h2>
+      </div>
+      <p>If you have any questions, concerns, or requests regarding these Terms or your use of SnapSweep AI, please reach out to us:</p>
+      <div class="callout success">
+        <span class="callout-icon">✉</span>
+        <div>
+          <strong style="display:block;margin-bottom:4px;">SnapSweep AI Support</strong>
+          Email: <a href="mailto:support@snapsweep.ai" style="color:var(--accent);font-weight:500;">support@snapsweep.ai</a><br>
+          <span style="font-size:13px;color:inherit;opacity:0.8;">We aim to respond to all enquiries within 2 business days.</span>
+        </div>
+      </div>
+      <p style="margin-top:16px;font-size:14px;color:var(--ink-3);">For billing or subscription issues, please also contact Google Play Support as purchases are managed through Google's platform.</p>
+    </div>
+
+  </main>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-left">
+      <div class="footer-logo">
+        <div class="footer-logo-dot"></div>
+        <span class="footer-logo-name">SnapSweep AI</span>
+      </div>
+      <span class="footer-copy">© 2025 SnapSweep AI. All rights reserved.</span>
+    </div>
+    <div class="footer-links">
+      <a href="terms.html">Terms of Service</a>
+      <a href="privacy.html">Privacy Policy</a>
+      <a href="mailto:support@snapsweep.ai">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Scroll animations
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.section').forEach(s => observer.observe(s));
+
+  // Active TOC highlighting
+  const tocLinks = document.querySelectorAll('.toc-list a');
+  const sections = document.querySelectorAll('.section[id]');
+  const tocObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        tocLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.toc-list a[href="#${e.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -60% 0px' });
+  sections.forEach(s => tocObserver.observe(s));
+</script>
+
+</body>
+</html>
